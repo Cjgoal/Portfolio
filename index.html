@@ -3,51 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colin Jennings | Portfolio</title>
+    <title>Colin Jennings | Engineering Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">Colin Jennings</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <h1>Colin Jennings</h1>
-    <p>Mechanical Engineering Student | Builder | Developer</p>
-</header>
+    <section id="hero">
+        <h1>Mechanical Engineering & Robotics</h1>
+        <p>Mechanical Engineering Student at UC Riverside | Founder of Pleasanton Pixels</p>
+    </section>
 
-<section class="about">
-    <h2>About Me</h2>
-    <p>
-        Mechanical engineering student with experience in robotics, CAD, electronics,
-        and embedded systems. Passionate about building real-world solutions.
-    </p>
-</section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a Mechanical Engineering student with a passion for robotics, design, and development. I enjoy exploring the intersection of hardware and software through combat robotics and large-scale synchronized light displays.</p>
+    </section>
 
-<section class="projects">
-    <h2>Projects</h2>
+    <section id="education">
+        <h2>Education & Coursework</h2>
+        <div class="edu-grid">
+            <div class="edu-item">
+                <h3>UC Riverside</h3>
+                <p>BS + MS Mechanical Engineering (Expected 2029)</p>
+            </div>
+            <div class="edu-item">
+                <h3>Key Coursework</h3>
+                <ul>
+                    <li>Honors Principles of Engineering</li>
+                    <li>Digital Electronics</li>
+                    <li>Advanced Computer Science</li>
+                    <li>AP Computer Science Applications</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    <div class="project">
-        <img src="bike-lock.jpg" alt="Smart Bike Lock">
-        <h3>Smart Bike Lock</h3>
-        <p>
-            Designed a Bluetooth-enabled automatic bike lock using ESP32 and a custom iOS app.
-            Features include proximity-based locking, BLE communication, and motorized actuation.
-        </p>
-    </div>
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/combat-robot.jpg');"></div>
+                <div class="project-info">
+                    <h3>Combat Robotics</h3>
+                    <p>Designed and manufactured 60lb and 3lb robots for Robogames and regional competitions. Focused on drivetrain reliability and weapon kinetic energy.</p>
+                </div>
+            </div>
 
-    <div class="project">
-        <img src="combat-robot.jpg" alt="Combat Robot">
-        <h3>60lb Combat Robot</h3>
-        <p>
-            Engineered and built a competition robot from the ground up, including CAD design,
-            fabrication, and electrical integration for RoboGames.
-        </p>
-    </div>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/fat-santa.jpg');"></div>
+                <div class="project-info">
+                    <h3>Pleasanton Pixels</h3>
+                    <p>Synchronized holiday light displays (e.g., "Fat Santa"). Utilized Xlights and microcontrollers to coordinate thousands of LEDs to music.</p>
+                </div>
+            </div>
 
-</section>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/drivetrain.jpg');"></div>
+                <div class="project-info">
+                    <h3>Drivetrain Design</h3>
+                    <p>Working on powertrain and drivetrain components for Highlander Racing Formula SAE, focusing on weight reduction and torque transfer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="contact">
-    <h2>Contact</h2>
-    <p>Email: colinjenn123@gmail.com</p>
-</section>
-
+    <footer>
+        <p>&copy; 2026 Colin Jennings | <a href="https://github.com/Cjgoal">GitHub</a> | <a href="https://pleasanton-pixels.wixsite.com/website">Original Pleasanton Pixels</a></p>
+    </footer>
 </body>
 </html>
