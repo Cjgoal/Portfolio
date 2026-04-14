@@ -1,82 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colin Jennings | Engineering Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colin Jennings — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e5e7eb;
+      background: radial-gradient(circle at 20% 20%, #1e293b, #020617);
+      overflow-x: hidden;
+    }
+
+    /* Galaxy effect */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 200%; height: 200%;
+      background: radial-gradient(white 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.05;
+      animation: drift 60s linear infinite;
+    }
+    @keyframes drift {
+      from { transform: translate(0,0); }
+      to { transform: translate(-200px, -200px); }
+    }
+
+    header {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2.5rem; font-weight: 700; }
+    header p { color: #94a3b8; margin-top: 0.5rem; }
+
+    .container { max-width: 1100px; margin: auto; padding: 1rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(30,41,59,0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .media { width: 100%; height: 200px; object-fit: cover; }
+    video { width: 100%; height: 200px; object-fit: cover; }
+
+    .content { padding: 1rem; }
+    .title { font-weight: 600; font-size: 1.2rem; }
+    .desc { font-size: 0.9rem; color: #94a3b8; margin-top: 0.3rem; }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal-content {
+      background: #020617;
+      border-radius: 20px;
+      max-width: 800px;
+      width: 100%;
+      padding: 1.5rem;
+    }
+    .close { float: right; cursor: pointer; font-size: 1.2rem; }
+
+    iframe { width: 100%; height: 300px; border-radius: 10px; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Colin Jennings</div>
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="hero">
-        <h1>Mechanical Engineering & Robotics</h1>
-        <p>Mechanical Engineering Student at UC Riverside</p>
-    </section>
+<header>
+  <h1>Colin Jennings</h1>
+  <p>Mechanical Engineering • Projects • Innovation</p>
+</header>
 
-   <section id="projects">
-    <h2>Engineering & Personal Projects</h2>
-    <div class="project-list">
+<div class="container">
+  <div class="grid">
 
-        <div class="project-entry">
-            <div class="project-header">
-                <h3>Combat Robotics: 60lb & 3lb Class</h3>
-                <span class="tag">Mechanical Design</span>
-            </div>
-            
-            <div class="media-scroller">
-                <div class="media-item video-container">
-                    <iframe src="https://www.youtube.com/embed/-laG-haSI4I" frameborder="0" allowfullscreen></iframe>
-                </div    >
-                <img src="assets/RoboGames 2024.jpg" alt="Robot Design" class="media-item">
-                <img src="assets/robot-cad.jpg" alt="SolidWorks Render" class="media-item">
-                <img src="assets/robot-internals.jpg" alt="Internal Wiring" class="media-item">
-            </div>
-
-            <div class="project-description">
-                <p>Detailed work on combat robotics focusing on high-kinetic energy weapons and custom drivetrains. Competed at Robogames 2024. Key challenges included weight optimization and shock-mounting electronics for 50G impacts.</p>
-            </div>
-        </div>
-
-        <div class="project-entry">
-            <div class="project-header">
-                <h3>Pleasanton Pixels: Holiday Light Shows</h3>
-                <span class="tag">Automation & Systems</span>
-            </div>
-
-            <div class="media-scroller">
-                <div class="media-item video-container">
-                    <iframe src="https://www.youtube.com/embed/-tC4W2WbGR0o" frameborder="0" allowfullscreen></iframe>
-                </div>
-                 <div class="media-item video-container">
-                    <iframe src="https://www.youtube.com/embed/-gQFijZqDM2Q" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="media-item video-container">
-                    <iframe src="https://www.youtube.com/embed/-gQFijZqDM2Q" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <img src="assets/Pleasanton Pixels 1.JPG" alt="="Full House Display 1" class="media-item">
-                <img src="assets/Pleasanton Pixels 3.JPG" alt="="Full House Display 2" class="media-item">
-                <img src="assets/Pleasanton Pixels 4.JPG" alt="="Full House Display 3" class="media-item">
-            </div>
-
-            <div class="project-description">
-                <p>Designed and programmed synchronized light shows using Xlights and ESP32 controllers. Managed power distribution for over 5,000 individual pixels and synchronized logic to musical scores.</p>
-            </div>
-        </div>
-
+    <!-- PROJECT 1 -->
+    <div class="card" onclick="openModal('bikeLock')">
+      <img src="images/bikelock.jpg" class="media">
+      <div class="content">
+        <div class="title">Smart Bike Lock</div>
+        <div class="desc">BLE-controlled automatic locking system</div>
+      </div>
     </div>
-</section>
 
-    <footer>
-        <p>&copy; 2026 Colin Jennings | <a href="https://github.com/Cjgoal">GitHub</a> | <a href="https://pleasanton-pixels.wixsite.com/website">Original Pleasanton Pixels</a></p>
-    </footer>
+    <!-- PROJECT 2 (YOUTUBE) -->
+    <div class="card" onclick="openModal('robot')">
+      <img src="images/robot.jpg" class="media">
+      <div class="content">
+        <div class="title">Combat Robot</div>
+        <div class="desc">60lb competition robot build</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODALS -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="close" onclick="closeModal()">✕</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Colin Jennings
+</footer>
+
+<script>
+  function openModal(project) {
+    const modal = document.getElementById('modal');
+    const body = document.getElementById('modal-body');
+
+    if(project === 'bikeLock') {
+      body.innerHTML = `
+        <h2>Smart Bike Lock</h2>
+        <p>Automatic BLE-based locking system with iOS app and ESP32.</p>
+        <video controls>
+          <source src="videos/bikelock.mp4" type="video/mp4">
+        </video>
+      `;
+    }
+
+    if(project === 'robot') {
+      body.innerHTML = `
+        <h2>Combat Robot</h2>
+        <p>Designed and built a 60lb combat robot for competition.</p>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+      `;
+    }
+
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+</script>
+
 </body>
 </html>
