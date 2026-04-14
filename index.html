@@ -11,158 +11,168 @@
 body{
   font-family:'Inter',sans-serif;
   color:#e5e7eb;
-  background:radial-gradient(circle at 20% 20%,#1e293b,#020617);
+  background:#020617;
 }
 
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:1.5rem 2rem;
-}
-.logo{font-weight:700;font-size:1.2rem}
+nav{display:flex;justify-content:space-between;padding:1.5rem 2rem}
+.logo{font-weight:700}
 ul{display:flex;gap:1.5rem;list-style:none}
 a{color:#94a3b8;text-decoration:none}
 a:hover{color:white}
 
-/* HERO */
-#hero{
-  text-align:center;
-  padding:4rem 1rem;
-}
-#hero h1{font-size:2.5rem;margin-bottom:.5rem}
+#hero{text-align:center;padding:4rem 1rem}
+#hero h1{font-size:2.5rem}
 #hero p{color:#94a3b8}
 
-/* SECTION */
-section{max-width:1100px;margin:auto;padding:2rem 1rem}
-h2{margin-bottom:1.5rem}
+.container{max-width:1100px;margin:auto;padding:2rem 1rem}
 
-/* PROJECT */
-.project-entry{
-  margin-bottom:3rem;
-  background:rgba(30,41,59,0.5);
-  padding:1.5rem;
-  border-radius:20px;
-}
-.project-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:1rem;
-}
-.tag{
-  background:#0ea5e9;
-  padding:.3rem .7rem;
-  border-radius:999px;
-  font-size:.7rem;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
 
-/* MEDIA SCROLLER */
-.media-scroller{
-  display:flex;
-  gap:1rem;
-  overflow-x:auto;
-  padding-bottom:.5rem;
+.card{
+  background:#111827;
+  border-radius:16px;
+  overflow:hidden;
+  transition:.3s;
 }
-.media-item{
-  min-width:300px;
-  border-radius:12px;
-}
-img.media-item{height:180px;object-fit:cover}
-.video-container iframe{
-  width:300px;
-  height:180px;
-  border-radius:12px;
+.card:hover{transform:translateY(-5px)}
+
+.preview{display:grid;grid-template-columns:2fr 1fr;gap:4px}
+.preview img, .preview iframe{width:100%;height:200px;object-fit:cover}
+.preview iframe{height:100%}
+
+.content{padding:1rem}
+.title{font-weight:600;font-size:1.2rem}
+.desc{color:#94a3b8;font-size:.9rem;margin:.3rem 0}
+
+.button{
+  margin-top:.5rem;
+  display:inline-block;
+  padding:.4rem .8rem;
+  border-radius:8px;
+  background:#2563eb;
+  font-size:.8rem;
 }
 
-.project-description{margin-top:1rem;color:#94a3b8}
-
-/* CONTACT */
-#contact{text-align:center}
-
-footer{
-  text-align:center;
+.modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.85);
+  display:none;justify-content:center;align-items:center;
+}
+.modal-content{
+  background:#020617;
   padding:2rem;
-  color:#64748b;
+  border-radius:16px;
+  max-width:800px;width:100%;
 }
+.close{cursor:pointer;float:right}
+
+footer{text-align:center;padding:2rem;color:#64748b}
 </style>
 </head>
 
 <body>
 
-<header>
 <nav>
-  <div class="logo">Colin Jennings</div>
-  <ul>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<div class="logo">Colin Jennings</div>
+<ul>
+<li><a href="#">Projects</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
 </nav>
-</header>
 
 <section id="hero">
 <h1>Mechanical Engineering & Robotics</h1>
 <p>Mechanical Engineering Student at UC Riverside</p>
 </section>
 
-<section id="projects">
-<h2>Engineering & Personal Projects</h2>
-
-<!-- ROBOT -->
-<div class="project-entry">
-<div class="project-header">
-<h3>Combat Robotics: 60lb & 3lb Class</h3>
-<span class="tag">Mechanical Design</span>
+<div class="container">
+<div id="projects" class="grid"></div>
 </div>
 
-<div class="media-scroller">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/-laG-haSI4I" allowfullscreen></iframe>
-</div>
-<img src="assets/RoboGames 2024.jpg" class="media-item">
-<img src="assets/robot-cad.jpg" class="media-item">
-<img src="assets/robot-internals.jpg" class="media-item">
-</div>
-
-<div class="project-description">
-<p>Designed and built competition combat robots with high-energy weapon systems and custom drivetrains. Focused on durability, weight optimization, and shock isolation for extreme impacts.</p>
+<div id="modal" class="modal" onclick="closeModal()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<span class="close" onclick="closeModal()">✕</span>
+<div id="modal-body"></div>
 </div>
 </div>
 
-<!-- LIGHT SHOW -->
-<div class="project-entry">
-<div class="project-header">
-<h3>Pleasanton Pixels: Holiday Light Shows</h3>
-<span class="tag">Automation & Systems</span>
-</div>
+<footer>© 2026 Colin Jennings</footer>
 
-<div class="media-scroller">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/-tC4W2WbGR0o" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/-gQFijZqDM2Q" allowfullscreen></iframe>
-</div>
-<img src="assets/Pleasanton Pixels 1.JPG" class="media-item">
-<img src="assets/Pleasanton Pixels 3.JPG" class="media-item">
-<img src="assets/Pleasanton Pixels 4.JPG" class="media-item">
-</div>
+<script>
+// === PROJECT DATA FILE SYSTEM (EDIT THIS ONLY) ===
+const projects = [
+{
+  title: "Combat Robotics",
+  description: "60lb combat robot build and competition",
+  video: "https://www.youtube.com/embed/-laG-haSI4I",
+  images: [
+    "assets/RoboGames 2024.jpg",
+    "assets/robot-cad.jpg",
+    "assets/robot-internals.jpg"
+  ],
+  details: "Designed and built competition combat robots focusing on durability and high-energy systems."
+},
+{
+  title: "Pleasanton Pixels",
+  description: "Holiday light automation system",
+  video: "https://www.youtube.com/embed/-tC4W2WbGR0o",
+  images: [
+    "assets/Pleasanton Pixels 1.JPG",
+    "assets/Pleasanton Pixels 3.JPG"
+  ],
+  details: "Synchronized large-scale LED displays using ESP32 and xLights."
+}
+];
 
-<div class="project-description">
-<p>Engineered synchronized holiday light shows using ESP32 controllers and xLights software. Managed thousands of LEDs with coordinated animations and music timing.</p>
-</div>
-</div>
+// === AUTO RENDER ===
+const container = document.getElementById('projects');
 
-</section>
+projects.forEach((p, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
 
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: your@email.com</p>
-</section>
+  const previewMedia = p.video
+    ? `<iframe src="${p.video}" allowfullscreen></iframe>`
+    : `<img src="${p.images[0]}">`;
 
-<footer>
-© 2026 Colin Jennings
-</footer>
+  const sideImage = p.images[0]
+    ? `<img src="${p.images[0]}">`
+    : '';
+
+  card.innerHTML = `
+    <div class="preview">
+      ${previewMedia}
+      ${sideImage}
+    </div>
+    <div class="content">
+      <div class="title">${p.title}</div>
+      <div class="desc">${p.description}</div>
+      <div class="button" onclick="openModal(${i})">View Project →</div>
+    </div>
+  `;
+
+  container.appendChild(card);
+});
+
+function openModal(i){
+  const p = projects[i];
+  const modal = document.getElementById('modal');
+  const body = document.getElementById('modal-body');
+
+  body.innerHTML = `
+    <h2>${p.title}</h2>
+    <p>${p.details}</p>
+    ${p.video ? `<iframe src="${p.video}" allowfullscreen></iframe>` : ''}
+    ${p.images.map(img => `<img src="${img}" style="width:100%;margin-top:10px;border-radius:10px">`).join('')}
+  `;
+
+  modal.style.display = 'flex';
+}
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
+</script>
 
 </body>
 </html>
