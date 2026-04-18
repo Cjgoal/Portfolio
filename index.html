@@ -12,25 +12,25 @@ body{
   font-family:'Inter',sans-serif;
   color:#e5e7eb;
   background:#020617;
+  line-height: 1.6;
 }
 
 nav{display:flex;justify-content:space-between;padding:1.5rem 2rem}
-.logo{font-weight:700}
+.logo{font-weight:700; color: #fff}
 ul{display:flex;gap:1.5rem;list-style:none}
-a{color:#94a3b8;text-decoration:none}
-a:hover{color:white}
+a{color:#94a3b8;text-decoration:none; transition: 0.2s;}
+a:hover{color:#2563eb}
 
-#hero{text-align:center;padding:4rem 1rem}
-#hero h1{font-size:2.5rem}
-#hero p{color:#94a3b8}
+#hero{text-align:center;padding:5rem 1rem}
+#hero h1{font-size:3rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+#hero p{color:#94a3b8; font-size: 1.1rem}
 
 .container{max-width:1100px;margin:auto;padding:2rem 1rem}
 
-/* UPDATED: Forced 2 columns with repeat(2, 1fr) */
 .grid{
   display:grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap:1.5rem;
+  gap:2rem;
 }
 
 .card{
@@ -38,53 +38,90 @@ a:hover{color:white}
   border-radius:16px;
   overflow:hidden;
   transition:.3s;
+  border: 1px solid #1f2937;
 }
-.card:hover{transform:translateY(-5px)}
+.card:hover{transform:translateY(-8px); border-color: #3b82f6;}
 
-.preview{display:grid;grid-template-columns:2fr 1fr;gap:4px}
-.preview img, .preview iframe{width:100%;height:200px;object-fit:cover}
-.preview iframe{height:100%}
+.preview{display:grid;grid-template-columns: 1fr; gap:0px}
+.preview img, .preview iframe{width:100%; height:250px; object-fit:cover; border: none;}
 
-.content{padding:1rem}
-.title{font-weight:600;font-size:1.2rem}
-.desc{color:#94a3b8;font-size:.9rem;margin:.3rem 0}
+.content{padding:1.5rem}
+.title{font-weight:600;font-size:1.3rem; color: #f8fafc}
+.desc{color:#94a3b8;font-size:.95rem;margin: 0.5rem 0 1rem 0}
 
 .button{
-  margin-top:.5rem;
   display:inline-block;
-  padding:.4rem .8rem;
+  padding:.6rem 1.2rem;
   border-radius:8px;
   background:#2563eb;
-  font-size:.8rem;
+  color: white;
+  font-size:.85rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s;
 }
+.button:hover{background: #3b82f6;}
 
+/* MODAL REDESIGN */
 .modal{
   position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.85);
+  background:rgba(2, 6, 23, 0.95);
   display:none;justify-content:center;align-items:center;
   z-index: 1000;
+  backdrop-filter: blur(5px);
 }
 .modal-content{
-  background:#020617;
-  padding:2rem;
-  border-radius:16px;
-  max-width:800px;width:100%;
-  max-height: 90vh;
+  background:#0f172a;
+  padding:0;
+  border-radius:20px;
+  max-width:900px;width:95%;
+  max-height: 85vh;
   overflow-y: auto;
+  border: 1px solid #1e293b;
+  position: relative;
 }
-.close{cursor:pointer;float:right; font-size: 1.5rem;}
-
-footer{text-align:center;padding:2rem;color:#64748b}
-
-/* NEW: Media Query for Mobile Responsiveness */
-@media (max-width: 768px) {
-  .grid {
+.modal-header {
+    padding: 2rem;
+    border-bottom: 1px solid #1e293b;
+}
+.modal-body-grid {
+    display: grid;
     grid-template-columns: 1fr;
-  }
-  #hero h1 {
-    font-size: 2rem;
-  }
+    gap: 2rem;
+    padding: 2rem;
+}
+.modal-info h2 { font-size: 2rem; margin-bottom: 1rem; }
+.modal-info p { color: #94a3b8; margin-bottom: 1.5rem; font-size: 1rem; }
+
+/* Constraining the large images */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+.image-gallery img {
+    width: 100%;
+    height: 200px; /* Controlled height */
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+.close{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor:pointer;
+    font-size: 1.5rem;
+    color: #94a3b8;
+    z-index: 10;
+}
+
+footer{text-align:center;padding:4rem 2rem;color:#64748b; font-size: 0.9rem;}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  #hero h1 { font-size: 2.2rem; }
 }
 </style>
 </head>
@@ -95,13 +132,13 @@ footer{text-align:center;padding:2rem;color:#64748b}
 <div class="logo">Colin Jennings</div>
 <ul>
 <li><a href="#projects">Projects</a></li>
-<li><a href="#">Contact</a></li>
+<li><a href="mailto:your-email@example.com">Contact</a></li>
 </ul>
 </nav>
 
 <section id="hero">
 <h1>Mechanical Engineering & Robotics</h1>
-<p>Mechanical Engineering Student at UC Riverside</p>
+<p>Engineering Student at UC Riverside | Hands-on Designer & Maker</p>
 </section>
 
 <div class="container">
@@ -115,70 +152,77 @@ footer{text-align:center;padding:2rem;color:#64748b}
 </div>
 </div>
 
-<footer>© 2026 Colin Jennings</footer>
+<footer>© 2026 Colin Jennings • Pleasanton, CA</footer>
 
 <script>
-// === PROJECT DATA FILES===
+// === ASSETS INTEGRATED FROM YOUR DIRECTORY ===
 const projects = [
 {
-  title: "Combat Robotics",
-  description: "60lb combat robot build and competition",
-  video: "https://www.youtube.com/embed/-laG-haSI4I",
+  title: "Pleasanton Pixels",
+  description: "Advanced holiday light synchronization and outdoor electronics.",
+  video: "https://www.youtube.com/embed/tC4W2WbGR0o",
+  thumbnail: "assets/Pleasanton Pixels 1.JPG",
   images: [
-    "assets/RoboGames 2024.jpg",
-    "assets/robot-cad.jpg",
-    "assets/robot-internals.jpg"
+    "assets/Halloween Outdoor Setup.JPG",
+    "assets/Controller Box.JPG",
+    "assets/Light Wall & Tune to sign.JPG",
+    "assets/Hosue layout.png",
+    "assets/Drilling PVC.JPG",
+    "assets/InstalllingLadder.HEIC",
+    "assets/sequnce.png",
+    "assets/Pleasanton Pixels 2.JPG",
+    "assets/Pleasanton Pixels 3.JPG",
+    "assets/Pleasanton Pixels 4.JPG"
   ],
-  details: "Designed and built competition combat robots focusing on durability and high-energy systems. Competed in International Robogames with a custom 6061 aluminum frame and steel drum spinner."
+  details: "A large-scale hobbyist engineering project involving ESP32 microcontrollers, custom power distribution, and xLights sequencing. This project showcases my ability to manage complex outdoor electrical setups and CAD-based house mapping."
 },
 {
-  title: "Pleasanton Pixels",
-  description: "Holiday Light Display - Checkout more at youtube.com/@pleasantonpixels",
-  video: "https://www.youtube.com/embed/tC4W2WbGR0o?si=nhFw7KkxOhVJ-",
+  title: "Combat Robotics (RoboGames)",
+  description: "60lb heavyweight robot designed for high-impact durability.",
+  video: "https://www.youtube.com/embed/-laG-haSI4I",
+  thumbnail: "assets/RoboGames 2024.png",
   images: [
-    "assets/Pleasanton Pixels 1.JPG",
-    "assets/Pleasanton Pixels 3.JPG"
+    "assets/RoboGames 2024.png"
   ],
-  details: "Synchronized large-scale LED displays using ESP32 and xLights. Managed full design, installation, and video production for music-synced shows."
+  details: "Engineered a combat robot with a 6061 aluminum frame and a high-kinetic energy weapon system. Competed at the International RoboGames 2024 in San Jose."
 },
-  {
-  title: "Ride Shield (Capstone Project)",
-  description: "Automatic Bike lock prototype; fully designed, coded, and manufactured.",
-  video: "https://www.youtube.com/embed/GA05c-eLNOg?si=sU1sAWiUBShPI8CK",
+{
+  title: "Manufacturing & Fabrication",
+  description: "Hands-on experience in welding, automotive repair, and shop safety.",
+  thumbnail: "assets/Welding Class.jpeg",
+  images: [
+    "assets/Welding Class.jpeg",
+    "assets/Automotive Class.jpeg"
+  ],
+  details: "Formal training in industrial manufacturing processes. Proficient in various welding techniques and automotive mechanical systems, bridging the gap between theoretical design and physical production."
+},
+{
+  title: "Ride Shield (Capstone)",
+  description: "Automated, BLE-activated bike security system.",
+  video: "https://www.youtube.com/embed/GA05c-eLNOg",
+  thumbnail: "assets/RideShieldPrototype.JPG",
   images: [
     "assets/RideShieldPrototype.JPG"
   ],
-  details: "A BLE-activated, hands-free bike locking system using an ESP32 microcontroller and custom iOS app interface."
+  details: "A fully integrated project featuring mechanical housing design, PCB electronics, and mobile app communication."
 }
 ];
 
-// === AUTO RENDER ===
 const container = document.getElementById('projects');
 
 projects.forEach((p, i) => {
   const card = document.createElement('div');
   card.className = 'card';
-
-  const previewMedia = p.video
-    ? `<iframe src="${p.video}" allowfullscreen frameborder="0"></iframe>`
-    : `<img src="${p.images}">`;
-
-  const sideImage = p.images
-    ? `<img src="${p.images}">`
-    : '';
-
   card.innerHTML = `
     <div class="preview">
-      ${previewMedia}
-      ${sideImage}
+      <img src="${p.thumbnail}" alt="${p.title}">
     </div>
     <div class="content">
       <div class="title">${p.title}</div>
       <div class="desc">${p.description}</div>
-      <div class="button" onclick="openModal(${i})">View Project →</div>
+      <div class="button" onclick="openModal(${i})">Case Study →</div>
     </div>
   `;
-
   container.appendChild(card);
 });
 
@@ -188,10 +232,19 @@ function openModal(i){
   const body = document.getElementById('modal-body');
 
   body.innerHTML = `
-    <h2 style="margin-bottom:10px">${p.title}</h2>
-    <p style="margin-bottom:20px; color:#94a3b8">${p.details}</p>
-    ${p.video ? `<iframe src="${p.video}" allowfullscreen style="width:100%; height:400px; border-radius:10px; border:none"></iframe>` : ''}
-    ${p.images.map(img => `<img src="${img}" style="width:100%;margin-top:10px;border-radius:10px">`).join('')}
+    <div class="modal-header">
+        <h2>${p.title}</h2>
+        <p style="color: #3b82f6; font-weight: 600;">Project Overview</p>
+    </div>
+    <div class="modal-body-grid">
+        <div class="modal-info">
+            <p>${p.details}</p>
+            ${p.video ? `<iframe src="${p.video}" allowfullscreen style="width:100%; height:450px; border-radius:12px; border:none; margin-bottom: 2rem;"></iframe>` : ''}
+        </div>
+        <div class="image-gallery">
+            ${p.images.map(img => `<img src="${img}" alt="Project detail">`).join('')}
+        </div>
+    </div>
   `;
 
   modal.style.display = 'flex';
