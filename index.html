@@ -93,7 +93,6 @@ a:hover{color:#2563eb}
 .modal-info h2 { font-size: 2rem; margin-bottom: 1rem; }
 .modal-info p { color: #94a3b8; margin-bottom: 1.5rem; font-size: 1rem; }
 
-/* Constraining the large images */
 .image-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -101,7 +100,7 @@ a:hover{color:#2563eb}
 }
 .image-gallery img {
     width: 100%;
-    height: 200px; /* Controlled height */
+    height: 200px;
     object-fit: cover;
     border-radius: 12px;
     border: 1px solid #334155;
@@ -155,17 +154,16 @@ footer{text-align:center;padding:4rem 2rem;color:#64748b; font-size: 0.9rem;}
 <footer>© 2026 Colin Jennings • Pleasanton, CA</footer>
 
 <script>
-// === ASSETS INTEGRATED FROM YOUR DIRECTORY ===
 const projects = [
 {
   title: "Highlander Racing - FSAE",
   description: "Drivetrain Engineering Associate at UC Riverside's Highlander Racing Team",
   thumbnail: "assets/robot-cad.jpg",
-  // PASTE YOUR EMBED URL HERE (Just the part inside the src="...")
-  slides: "https://o365ucr-my.sharepoint.com/personal/cjenn003_ucr_edu/_layouts/15/Doc.asp", 
+  // Extracted the clean embed URL from your iframe
+  slides: "https://o365ucr-my.sharepoint.com/personal/cjenn003_ucr_edu/_layouts/15/Doc.aspx?sourcedoc={a3e27af7-c4d3-4b75-afbc-c6735f95781e}&action=embedview&wdAr=1.7777777777777777", 
   images: ["assets/robot-cad.jpg"],
-  details: "This presentation covers the FEA analysis and drivetrain optimization for the 2026 competition season."
-}
+  details: "As a Drivetrain Associate for Highlander Racing, I focus on mechanical design and assembly. This presentation covers the FEA analysis and drivetrain optimization for the 2026 competition season, highlighting our approach to reducing unsprung mass."
+},
 {
   title: "Pleasanton Pixels",
   description: "Advanced holiday light synchronization and outdoor electronics.",
@@ -192,7 +190,6 @@ const projects = [
   thumbnail: "assets/IMG_6491.jpeg",
   images: [
     "assets/IMG_3930.jpeg",
-    "assets/IMG_3930.jpeg",
     "assets/IMG_4090.jpeg",
     "assets/IMG_4160.jpeg",
     "assets/IMG_4198.jpeg",
@@ -201,15 +198,13 @@ const projects = [
     "assets/IMG_4219.jpeg",
     "assets/IMG_4391.jpeg",
     "assets/IMG_4397.jpeg",
-    "assets/IMG_4397.jpeg",
     "assets/IMG_9849.jpeg"
-    
   ],
-  details: "Engineered and built a combat robot with a 6061 aluminum frame and a high kinetic steel weapon. Competed at the International RoboGames 2024 in San Jose, placing in 5th place."
+  details: "Engineered and built a combat robot with a 6061 aluminum frame and a high kinetic steel weapon. Competed at the International RoboGames 2024 in San Jose, placing 5th."
 },
 {
   title: "Manufacturing & Fabrication",
-  description: "Hands-on classes for Welding, Automotive technology, Manufacturing and Robotics.",
+  description: "Hands-on classes for Welding, Automotive technology, and Robotics.",
   thumbnail: "assets/Welding Class.jpeg",
   images: [
     "assets/Welding Class.jpeg",
@@ -225,7 +220,7 @@ const projects = [
   images: [
     "assets/IMG_5276.jpeg"
   ],
-  details: "A fully integrated project featuring mechanical housing design, PCB electronics, and mobile app communication."
+  details: "A fully integrated project featuring mechanical housing design, PCB electronics, and mobile app communication via an ESP32."
 }
 ];
 
@@ -260,13 +255,11 @@ function openModal(i){
     <div class="modal-body-grid">
         <div class="modal-info">
             <p>${p.details}</p>
-            
             ${p.slides ? `
               <div style="margin-bottom: 2rem;">
                 <iframe src="${p.slides}" width="100%" height="450px" frameborder="0" scrolling="no" allowfullscreen="true" style="border-radius:12px; border:1px solid #1e293b;"></iframe>
               </div>
             ` : ''}
-
             ${p.video ? `<iframe src="${p.video}" allowfullscreen style="width:100%; height:450px; border-radius:12px; border:none; margin-bottom: 2rem;"></iframe>` : ''}
         </div>
         <div class="image-gallery">
