@@ -26,7 +26,12 @@ a:hover{color:white}
 
 .container{max-width:1100px;margin:auto;padding:2rem 1rem}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+/* UPDATED: Forced 2 columns with repeat(2, 1fr) */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap:1.5rem;
+}
 
 .card{
   background:#111827;
@@ -51,22 +56,36 @@ a:hover{color:white}
   border-radius:8px;
   background:#2563eb;
   font-size:.8rem;
+  cursor: pointer;
 }
 
 .modal{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.85);
   display:none;justify-content:center;align-items:center;
+  z-index: 1000;
 }
 .modal-content{
   background:#020617;
   padding:2rem;
   border-radius:16px;
   max-width:800px;width:100%;
+  max-height: 90vh;
+  overflow-y: auto;
 }
-.close{cursor:pointer;float:right}
+.close{cursor:pointer;float:right; font-size: 1.5rem;}
 
 footer{text-align:center;padding:2rem;color:#64748b}
+
+/* NEW: Media Query for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  #hero h1 {
+    font-size: 2rem;
+  }
+}
 </style>
 </head>
 
@@ -75,7 +94,7 @@ footer{text-align:center;padding:2rem;color:#64748b}
 <nav>
 <div class="logo">Colin Jennings</div>
 <ul>
-<li><a href="#">Projects</a></li>
+<li><a href="#projects">Projects</a></li>
 <li><a href="#">Contact</a></li>
 </ul>
 </nav>
@@ -110,7 +129,7 @@ const projects = [
     "assets/robot-cad.jpg",
     "assets/robot-internals.jpg"
   ],
-  details: "Designed and built competition combat robots focusing on durability and high-energy systems."
+  details: "Designed and built competition combat robots focusing on durability and high-energy systems. Competed in International Robogames with a custom 6061 aluminum frame and steel drum spinner."
 },
 {
   title: "Pleasanton Pixels",
@@ -120,16 +139,16 @@ const projects = [
     "assets/Pleasanton Pixels 1.JPG",
     "assets/Pleasanton Pixels 3.JPG"
   ],
-  details: "Synchronized large-scale LED displays using ESP32 and xLights."
+  details: "Synchronized large-scale LED displays using ESP32 and xLights. Managed full design, installation, and video production for music-synced shows."
 },
   {
   title: "Ride Shield (Capstone Project)",
-  description: "Automatic Bike lock prototype; fully designed, coded, and manufactured by my project partner and I.",
+  description: "Automatic Bike lock prototype; fully designed, coded, and manufactured.",
   video: "https://www.youtube.com/embed/GA05c-eLNOg?si=sU1sAWiUBShPI8CK",
   images: [
     "assets/RideShieldPrototype.JPG"
   ],
-  details: "Synchronized large-scale LED displays using ESP32 and xLights."
+  details: "A BLE-activated, hands-free bike locking system using an ESP32 microcontroller and custom iOS app interface."
 }
 ];
 
@@ -141,11 +160,11 @@ projects.forEach((p, i) => {
   card.className = 'card';
 
   const previewMedia = p.video
-    ? `<iframe src="${p.video}" allowfullscreen></iframe>`
-    : `<img src="${p.images[0]}">`;
+    ? `<iframe src="${p.video}" allowfullscreen frameborder="0"></iframe>`
+    : `<img src="${p.images}">`;
 
-  const sideImage = p.images[0]
-    ? `<img src="${p.images[0]}">`
+  const sideImage = p.images
+    ? `<img src="${p.images}">`
     : '';
 
   card.innerHTML = `
@@ -169,9 +188,9 @@ function openModal(i){
   const body = document.getElementById('modal-body');
 
   body.innerHTML = `
-    <h2>${p.title}</h2>
-    <p>${p.details}</p>
-    ${p.video ? `<iframe src="${p.video}" allowfullscreen></iframe>` : ''}
+    <h2 style="margin-bottom:10px">${p.title}</h2>
+    <p style="margin-bottom:20px; color:#94a3b8">${p.details}</p>
+    ${p.video ? `<iframe src="${p.video}" allowfullscreen style="width:100%; height:400px; border-radius:10px; border:none"></iframe>` : ''}
     ${p.images.map(img => `<img src="${img}" style="width:100%;margin-top:10px;border-radius:10px">`).join('')}
   `;
 
