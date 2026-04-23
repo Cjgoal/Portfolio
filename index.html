@@ -11,7 +11,21 @@
 body{font-family:'Inter',sans-serif;color:#e5e7eb;background:#020617;line-height:1.6}
 
 /* ===== TOGGLE THIS (true/false) ===== */
-#banner{display:none}
+#banner{
+  width:100%;
+  text-align:center;
+  padding:0.6rem;
+  font-weight:700;
+  background: repeating-linear-gradient(
+    45deg,
+    #facc15,
+    #facc15 10px,
+    #111827 10px,
+    #111827 20px
+  );
+  color:white;
+  text-shadow:0 1px 3px rgba(0,0,0,0.8);
+}
 .banner-on #banner{display:block}
 
 #banner{
@@ -113,54 +127,80 @@ footer{text-align:center;padding:3rem;color:#64748b}
 <script>
 const projects = [
 {
-  title:"Dreammakers Article",
-  description:"Featured in Tri-Valley innovation article",
-  thumbnail:"assets/article.jpg",
-  external:"https://www.pleasantonweekly.com/news/2024/12/11/the-future-of-innovation-bold-students-honored-as-tri-valleys-2024-dreammakers-and-risktakers/"
+  title: "Dreammakers Article",
+  description: "Featured in Tri-Valley innovation article",
+  thumbnail: "assets/article.jpg",
+  external: "https://www.pleasantonweekly.com/news/2024/12/11/the-future-of-innovation-bold-students-honored-as-tri-valleys-2024-dreammakers-and-risktakers/"
 },
 {
-  title:"Highlander Racing - FSAE",
-  description:"Drivetrain Engineering Associate",
-  thumbnail:"assets/highlander racing.jpg",
-  slides:"assets/Drivetrain Intern Project.pdf",
-  images:["assets/robot-cad.jpg","assets/FSAE ScatterShield Drawing.png"],
-  details:"Differential + scatter shield design using FEA.",
-  // TODO: add
-  // - machining photos
-  // - CAD screenshots
-  // - assembly pics
+  title: "Highlander Racing - FSAE",
+  description: "Drivetrain Engineering Associate at UC Riverside's Highlander Racing Team",
+  thumbnail: "assets/highlander racing.jpg",
+  slides: "assets/Drivetrain Intern Project.pdf",
+  images: [
+    "assets/robot-cad.jpg",
+    "assets/FSAE ScatterShield Drawing.png"
+  ],
+  details: "As a Drivetrain Associate for Highlander Racing, I designed a full differential assembly and scatter shield. Used SolidWorks FEA to minimize deflection while maintaining low weight, and produced detailed engineering drawings."
 },
 {
-  title:"Pleasanton Pixels",
-  description:"Holiday light shows",
-  video:"https://www.youtube.com/embed/tC4W2WbGR0o",
-  thumbnail:"assets/Pleasanton Pixels 1.JPG",
-  images:["assets/Controller Box.JPG"],
-  details:"ESP32 + power distribution system",
-  // TODO:
-  // - power supply photos
-  // - soldering/build pics
-  // - control system diagrams
+  title: "Pleasanton Pixels",
+  description: "Computer controlled holiday light shows.",
+  video: "https://www.youtube.com/embed/tC4W2WbGR0o",
+  thumbnail: "assets/Pleasanton Pixels 1.JPG",
+  images: [
+    "assets/Halloween Outdoor Setup.JPG",
+    "assets/Controller Box.JPG",
+    "assets/Light Wall & Tune to sign.JPG",
+    "assets/Hosue layout.png",
+    "assets/Drilling PVC.JPG",
+    "assets/sequnce.png",
+    "assets/Pleasanton Pixels 2.JPG",
+    "assets/Pleasanton Pixels 3.JPG",
+    "assets/Pleasanton Pixels 4.JPG"
+  ],
+  details: "A large-scale engineering project involving raspberry pi's, custom power distribution, mechanical display design, manufacturing and xLights sequencing."
 },
 {
-  title:"Combat Robotics",
-  description:"60lb robot",
-  video:"https://www.youtube.com/embed/-laG-haSI4I",
-  thumbnail:"assets/IMG_6491.jpeg",
-  images:["assets/IMG_3930.jpeg"],
-  details:"250mph weapon system",
-  // TODO:
-  // - event photos
-  // - CAD breakdown
-  // - suppliers/components list
+  title: "Combat Robotics (RoboGames)",
+  description: "60lb heavyweight robot designed for high-impact durability on a budget.",
+  video: "https://www.youtube.com/embed/-laG-haSI4I",
+  thumbnail: "assets/IMG_6491.jpeg",
+  images: [
+    "assets/IMG_3930.jpeg",
+    "assets/IMG_4090.jpeg",
+    "assets/IMG_4160.jpeg",
+    "assets/IMG_4198.jpeg",
+    "assets/IMG_4200.jpeg",
+    "assets/IMG_4201.jpeg",
+    "assets/IMG_4219.jpeg",
+    "assets/IMG_4391.jpeg",
+    "assets/IMG_4397.jpeg",
+    "assets/IMG_9849.jpeg"
+  ],
+  details: "Engineered and built a combat robot with a 6061 aluminum frame and a high kinetic energy steel weapon, designed for 250 mph tip speed. Competed at RoboGames 2024 in San Jose."
 },
 {
-  title:"Ride Shield",
-  description:"BLE bike lock",
-  video:"https://www.youtube.com/embed/GA05c-eLNOg",
-  thumbnail:"assets/IMG_5276.jpeg",
-  images:["assets/IMG_5276.jpeg"],
-  details:"Capstone project presented to local tech groups"
+  title: "Manufacturing & Fabrication",
+  description: "Hands-on classes for Welding, Automotive technology, and Robotics.",
+  video: "https://www.youtube.com/embed/h1hCHBayH5Q?si=8SAsgRnf_8F4KXvV",
+  thumbnail: "assets/Welding Class.jpeg",
+  images: [
+    "assets/Welding Class.jpeg",
+    "assets/Automotive Class.jpeg",
+    "assets/IMG_3925.jpeg"
+  ],
+  details: "Formal introduction and training in multiple types of welding, metal manufacturing, 3D printing, laser cutting, and fabrication."
+},
+{
+  title: "Ride Shield (Capstone)",
+  description: "Automated BLE-activated bike security system.",
+  video: "https://www.youtube.com/embed/GA05c-eLNOg",
+  thumbnail: "assets/IMG_5276.jpeg",
+  images: [
+    "assets/IMG_5276.jpeg"
+  ],
+  details: "A fully integrated project featuring a mechanical braking system prototype and custom iPhone app communicating with an ESP32 over Bluetooth. Presented to local Tri-Valley technology groups."
 }
 ];
 
