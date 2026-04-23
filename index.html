@@ -8,124 +8,71 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Inter',sans-serif;
-  color:#e5e7eb;
-  background:#020617;
-  line-height: 1.6;
+body{font-family:'Inter',sans-serif;color:#e5e7eb;background:#020617;line-height:1.6}
+
+/* ===== TOGGLE THIS (true/false) ===== */
+#banner{display:none}
+.banner-on #banner{display:block}
+
+#banner{
+  width:100%;
+  text-align:center;
+  padding:0.6rem;
+  font-weight:600;
+  background: repeating-linear-gradient(
+    45deg,
+    #facc15,
+    #facc15 10px,
+    #111827 10px,
+    #111827 20px
+  );
+  color:black;
 }
 
 nav{display:flex;justify-content:space-between;padding:1.5rem 2rem}
-.logo{font-weight:700; color: #fff}
+.logo{font-weight:700;color:#fff}
 ul{display:flex;gap:1.5rem;list-style:none}
-a{color:#94a3b8;text-decoration:none; transition: 0.2s;}
-a:hover{color:#2563eb}
+a{color:#94a3b8;text-decoration:none}a:hover{color:#2563eb}
 
 #hero{text-align:center;padding:5rem 1rem}
-#hero h1{font-size:3rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-#hero p{color:#94a3b8; font-size: 1.1rem}
+#hero h1{font-size:3rem;background:linear-gradient(to right,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#hero p{color:#94a3b8}
 
 .container{max-width:1100px;margin:auto;padding:2rem 1rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
 
-.grid{
-  display:grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap:2rem;
-}
+.card{background:#111827;border-radius:16px;overflow:hidden;border:1px solid #1f2937;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:#3b82f6}
 
-.card{
-  background:#111827;
-  border-radius:16px;
-  overflow:hidden;
-  transition:.3s;
-  border: 1px solid #1f2937;
-}
-.card:hover{transform:translateY(-8px); border-color: #3b82f6;}
-
-.preview img{width:100%; height:250px; object-fit:cover}
+.preview img{width:100%;height:250px;object-fit:cover}
 
 .content{padding:1.5rem}
-.title{font-weight:600;font-size:1.3rem; color: #f8fafc}
-.desc{color:#94a3b8;font-size:.95rem;margin: 0.5rem 0 1rem 0}
+.title{font-weight:600;font-size:1.2rem}
+.desc{color:#94a3b8;font-size:.9rem;margin:.5rem 0}
+.button{background:#2563eb;padding:.5rem 1rem;border-radius:8px;display:inline-block;cursor:pointer}
 
-.button{
-  display:inline-block;
-  padding:.6rem 1.2rem;
-  border-radius:8px;
-  background:#2563eb;
-  color: white;
-  font-size:.85rem;
-  font-weight: 600;
-  cursor: pointer;
-}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;justify-content:center;align-items:center}
+.modal-content{background:#020617;border-radius:16px;max-width:900px;width:95%;max-height:85vh;overflow:auto}
 
-/* MODAL */
-.modal{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(2, 6, 23, 0.95);
-  display:none;justify-content:center;align-items:center;
-  z-index: 1000;
-}
-.modal-content{
-  background:#0f172a;
-  border-radius:20px;
-  max-width:900px;width:95%;
-  max-height: 85vh;
-  overflow-y: auto;
-  position: relative;
-}
+.image-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;padding:2rem}
+.image-gallery img{width:100%;height:200px;object-fit:cover;border-radius:10px;cursor:pointer}
 
-.image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 2rem;
-}
-.image-gallery img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.image-gallery img:hover { transform: scale(1.03); }
+.img-viewer{position:fixed;top:0;left:0;width:100%;height:100%;background:black;display:none;justify-content:center;align-items:center}
+.img-viewer img{max-width:90%;max-height:90%}
 
-/* IMAGE FULLSCREEN */
-.img-viewer{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.9);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
-.img-viewer img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
-}
-
-.close{
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor:pointer;
-}
-
-footer{text-align:center;padding:4rem 2rem;color:#64748b;}
+footer{text-align:center;padding:3rem;color:#64748b}
 </style>
 </head>
 
-<body>
+<body class="banner-on"><!-- REMOVE 'banner-on' TO TURN OFF -->
+
+<div id="banner">⚠️ Site under construction — some content may be incomplete</div>
 
 <nav>
 <div class="logo">Colin Jennings</div>
 <ul>
 <li><a href="#projects">Projects</a></li>
-<li><a href="mailto:your-email@example.com">Contact</a></li>
+<li><a href="#" onclick="openContact()">Contact</a></li>
 </ul>
 </nav>
 
@@ -138,15 +85,27 @@ footer{text-align:center;padding:4rem 2rem;color:#64748b;}
 <div id="projects" class="grid"></div>
 </div>
 
+<!-- MODALS -->
 <div id="modal" class="modal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
-<span class="close" onclick="closeModal()">✕</span>
+<span onclick="closeModal()" style="float:right;padding:1rem;cursor:pointer">✕</span>
 <div id="modal-body"></div>
 </div>
 </div>
 
 <div id="imgViewer" class="img-viewer" onclick="closeImage()">
-  <img id="imgViewerSrc">
+<img id="imgViewerSrc">
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal" onclick="closeContact()">
+<div class="modal-content" onclick="event.stopPropagation()" style="padding:2rem">
+<span onclick="closeContact()" style="float:right;cursor:pointer">✕</span>
+<h2>Contact</h2>
+<p>Email: your-email@example.com</p>
+<p>GitHub: (add link)</p>
+<p>LinkedIn: (add link)</p>
+</div>
 </div>
 
 <footer>© 2026 Colin Jennings</footer>
@@ -154,127 +113,103 @@ footer{text-align:center;padding:4rem 2rem;color:#64748b;}
 <script>
 const projects = [
 {
-  title: "Highlander Racing - FSAE",
-  description: "Drivetrain Engineering Associate at UC Riverside's Highlander Racing Team",
-  thumbnail: "assets/highlander racing.jpg",
-  slides: "assets/Drivetrain Intern Project.pdf",
-  images: [
-    "assets/robot-cad.jpg",
-    "assets/FSAE ScatterShield Drawing.png"
-  ],
-  details: "As a Drivetrain Associate for Highlander Racing, I designed a full differential assembly and scatter shield. Used SolidWorks FEA to minimize deflection while maintaining low weight, and produced detailed engineering drawings."
+  title:"Dreammakers Article",
+  description:"Featured in Tri-Valley innovation article",
+  thumbnail:"assets/article.jpg",
+  external:"https://www.pleasantonweekly.com/news/2024/12/11/the-future-of-innovation-bold-students-honored-as-tri-valleys-2024-dreammakers-and-risktakers/"
 },
 {
-  title: "Pleasanton Pixels",
-  description: "Computer controlled holiday light shows.",
-  video: "https://www.youtube.com/embed/tC4W2WbGR0o",
-  thumbnail: "assets/Pleasanton Pixels 1.JPG",
-  images: [
-    "assets/Halloween Outdoor Setup.JPG",
-    "assets/Controller Box.JPG",
-    "assets/Light Wall & Tune to sign.JPG",
-    "assets/Hosue layout.png",
-    "assets/Drilling PVC.JPG",
-    "assets/sequnce.png",
-    "assets/Pleasanton Pixels 2.JPG",
-    "assets/Pleasanton Pixels 3.JPG",
-    "assets/Pleasanton Pixels 4.JPG"
-  ],
-  details: "Large-scale engineering project using Raspberry Pi and ESP32 systems to control thousands of LEDs synchronized to music."
+  title:"Highlander Racing - FSAE",
+  description:"Drivetrain Engineering Associate",
+  thumbnail:"assets/highlander racing.jpg",
+  slides:"assets/Drivetrain Intern Project.pdf",
+  images:["assets/robot-cad.jpg","assets/FSAE ScatterShield Drawing.png"],
+  details:"Differential + scatter shield design using FEA.",
+  // TODO: add
+  // - machining photos
+  // - CAD screenshots
+  // - assembly pics
 },
 {
-  title: "Combat Robotics (RoboGames)",
-  description: "60lb heavyweight robot designed for high-impact durability.",
-  video: "https://www.youtube.com/embed/-laG-haSI4I",
-  thumbnail: "assets/IMG_6491.jpeg",
-  images: [
-    "assets/IMG_3930.jpeg",
-    "assets/IMG_4090.jpeg",
-    "assets/IMG_4160.jpeg",
-    "assets/IMG_4198.jpeg",
-    "assets/IMG_4200.jpeg",
-    "assets/IMG_4201.jpeg",
-    "assets/IMG_4219.jpeg",
-    "assets/IMG_4391.jpeg",
-    "assets/IMG_4397.jpeg",
-    "assets/IMG_9849.jpeg"
-  ],
-  details: "Engineered a 60lb combat robot with a 250 mph weapon system. Competed at RoboGames 2024, placing 5th against experienced teams."
+  title:"Pleasanton Pixels",
+  description:"Holiday light shows",
+  video:"https://www.youtube.com/embed/tC4W2WbGR0o",
+  thumbnail:"assets/Pleasanton Pixels 1.JPG",
+  images:["assets/Controller Box.JPG"],
+  details:"ESP32 + power distribution system",
+  // TODO:
+  // - power supply photos
+  // - soldering/build pics
+  // - control system diagrams
 },
 {
-  title: "Manufacturing & Fabrication",
-  description: "Hands-on experience with welding, automotive tech, and fabrication.",
-  video: "https://www.youtube.com/embed/h1hCHBayH5Q?si=8SAsgRnf_8F4KXvV",
-  thumbnail: "assets/Welding Class.jpeg",
-  images: [
-    "assets/Welding Class.jpeg",
-    "assets/Automotive Class.jpeg",
-    "assets/IMG_3925.jpeg"
-  ],
-  details: "Hands-on training in welding, machining, 3D printing, and fabrication processes."
+  title:"Combat Robotics",
+  description:"60lb robot",
+  video:"https://www.youtube.com/embed/-laG-haSI4I",
+  thumbnail:"assets/IMG_6491.jpeg",
+  images:["assets/IMG_3930.jpeg"],
+  details:"250mph weapon system",
+  // TODO:
+  // - event photos
+  // - CAD breakdown
+  // - suppliers/components list
 },
 {
-  title: "Ride Shield (Capstone)",
-  description: "Automated BLE bike security system.",
-  video: "https://www.youtube.com/embed/GA05c-eLNOg",
-  thumbnail: "assets/IMG_5276.jpeg",
-  images: [
-    "assets/IMG_5276.jpeg"
-  ],
-  details: "Developed a BLE-enabled bike lock using an ESP32 and iOS app, integrating mechanical braking with wireless control."
+  title:"Ride Shield",
+  description:"BLE bike lock",
+  video:"https://www.youtube.com/embed/GA05c-eLNOg",
+  thumbnail:"assets/IMG_5276.jpeg",
+  images:["assets/IMG_5276.jpeg"],
+  details:"Capstone project presented to local tech groups"
 }
 ];
 
-const container = document.getElementById('projects');
+const container=document.getElementById('projects');
 
-projects.forEach((p, i) => {
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `
-    <div class="preview">
-      <img src="${p.thumbnail}">
-    </div>
+projects.forEach((p,i)=>{
+  const card=document.createElement('div');
+  card.className='card';
+
+  const clickAction = p.external
+    ? `window.open('${p.external}','_blank')`
+    : `openModal(${i})`;
+
+  card.innerHTML=`
+    <div class="preview"><img src="${p.thumbnail}"></div>
     <div class="content">
       <div class="title">${p.title}</div>
       <div class="desc">${p.description}</div>
-      <div class="button" onclick="openModal(${i})">About →</div>
-    </div>
-  `;
+      <div class="button" onclick="${clickAction}">${p.external ? 'Open Article →' : 'About →'}</div>
+    </div>`;
+
   container.appendChild(card);
 });
 
 function openModal(i){
-  const p = projects[i];
-  const modal = document.getElementById('modal');
-  const body = document.getElementById('modal-body');
+  const p=projects[i];
+  const modal=document.getElementById('modal');
+  const body=document.getElementById('modal-body');
 
-  body.innerHTML = `
+  body.innerHTML=`
     <div style="padding:2rem">
       <h2>${p.title}</h2>
-      <p>${p.details}</p>
-      ${p.slides ? `<iframe src="${p.slides}" style="width:100%;height:400px;margin:1rem 0;border-radius:12px;border:1px solid #1e293b"></iframe>` : ''}
-      ${p.video ? `<iframe src="${p.video}" allowfullscreen style="width:100%;height:400px;margin:1rem 0;border-radius:12px;border:none"></iframe>` : ''}
+      <p>${p.details||''}</p>
+      ${p.slides?`<iframe src="${p.slides}" style="width:100%;height:400px"></iframe>`:''}
+      ${p.video?`<iframe src="${p.video}" style="width:100%;height:400px"></iframe>`:''}
     </div>
     <div class="image-gallery">
-      ${p.images.map(img => `<img src="${img}" onclick="openImage('${img}')">`).join('')}
-    </div>
-  `;
+      ${(p.images||[]).map(img=>`<img src="${img}" onclick="openImage('${img}')">`).join('')}
+    </div>`;
 
-  modal.style.display = 'flex';
+  modal.style.display='flex';
 }
 
-function closeModal(){
-  document.getElementById('modal').style.display='none';
-}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function openImage(src){document.getElementById('imgViewerSrc').src=src;document.getElementById('imgViewer').style.display='flex'}
+function closeImage(){document.getElementById('imgViewer').style.display='none'}
 
-function openImage(src){
-  document.getElementById('imgViewerSrc').src = src;
-  document.getElementById('imgViewer').style.display = 'flex';
-}
-
-function closeImage(){
-  document.getElementById('imgViewer').style.display = 'none';
-}
+function openContact(){document.getElementById('contactModal').style.display='flex'}
+function closeContact(){document.getElementById('contactModal').style.display='none'}
 </script>
 
 </body>
