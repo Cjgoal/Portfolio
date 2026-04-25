@@ -162,10 +162,7 @@ footer{text-align:center;padding:3rem;color:#64748b}
 
 <section class="about">
 <p>
-<!-- WRITE THIS -->
-<!-- • What kind of engineer you are -->
-<!-- • What you build -->
-<!-- • What makes you different -->
+<!-- TODO: Write a short intro about yourself -->
 </p>
 </section>
 
@@ -204,55 +201,7 @@ function formatDetails(text){
   return text.split('. ').map(line => `• ${line.trim()}`).join('<br><br>');
 }
 
-const projects = [/* KEEP YOUR PROJECTS EXACTLY AS YOU HAVE THEM */];
-
-const container=document.getElementById('projects');
-
-projects.forEach((p,i)=>{
-  const card=document.createElement('div');
-  card.className='card';
-
-  const clickAction = p.external
-    ? `gtag('event','open_external',{project:'${p.title}'}); window.open('${p.external}','_blank')`
-    : `gtag('event','open_project',{project:'${p.title}'}); openModal(${i})`;
-
-  card.innerHTML=`
-    <div class="preview"><img src="${p.thumbnail}"></div>
-    <div class="content">
-      <div class="title">${p.title}</div>
-      <div class="desc">${p.description || ''}</div>
-      <div class="button" onclick="${clickAction}">
-        ${p.external ? 'Open Article →' : 'About →'}
-      </div>
-    </div>`;
-
-  container.appendChild(card);
-});
-
-function openModal(i){
-  const p=projects[i];
-  document.getElementById('modal-body').innerHTML=`
-    <div style="padding:2rem">
-      <h2>${p.title}</h2>
-      <div class="details">${formatDetails(p.details)}</div>
-
-      ${p.slides?`<iframe src="${p.slides}" style="width:100%;height:400px"></iframe>`:''}
-      ${p.video?`<iframe src="${p.video}" style="width:100%;height:400px"></iframe>`:''}
-    </div>
-
-    <div class="image-gallery">
-      ${(p.images||[]).map(img=>`<img src="${img}" onclick="openImage('${img}')">`).join('')}
-    </div>`;
-
-  document.getElementById('modal').style.display='flex';
-}
-
-function closeModal(){document.getElementById('modal').style.display='none'}
-function openImage(src){document.getElementById('imgViewerSrc').src=src;document.getElementById('imgViewer').style.display='flex'}
-function closeImage(){document.getElementById('imgViewer').style.display='none'}
-
-function openContact(){document.getElementById('contactModal').style.display='flex'}
-function closeContact(){document.getElementById('contactModal').style.display='none'}
+const projects = YOUR_PROJECT_ARRAY_HERE;
 </script>
 
 </body>
