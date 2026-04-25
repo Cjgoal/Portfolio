@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2FGZPS91XB"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2FGZPS91XB');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2FGZPS91XB');
 </script>
 
 <meta charset="UTF-8">
@@ -18,25 +18,39 @@ gtag('config', 'G-2FGZPS91XB');
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;color:#e5e7eb;background:#020617;line-height:1.6}
+body{
+  font-family:'Inter',sans-serif;
+  color:#e5e7eb;
+  background:#020617;
+  line-height:1.6;
+}
 
+/* ===== BANNER ===== */
 #banner{
   width:100%;
   text-align:center;
-  padding:0.6rem;
+  padding:0.7rem;
   font-weight:700;
-  background: repeating-linear-gradient(45deg,#FFB700,#FFB700 10px,#26201F 10px,#26201F 20px);
+  background: repeating-linear-gradient(
+    45deg,
+    #FFB700,
+    #FFB700 10px,
+    #1f1f1f 10px,
+    #1f1f1f 20px
+  );
   color:white;
-  text-shadow:0 0 4px black, 0 0 8px black;
+  -webkit-text-stroke: 0.8px black;
+  text-shadow:0 2px 6px rgba(0,0,0,0.8);
 }
-.banner-on #banner{display:block}
 
+/* ===== NAV ===== */
 nav{display:flex;justify-content:space-between;padding:1.5rem 2rem}
 .logo{font-weight:700;color:#fff}
 ul{display:flex;gap:1.5rem;list-style:none}
 a{color:#94a3b8;text-decoration:none}
 a:hover{color:#2563eb}
 
+/* ===== HERO ===== */
 #hero{text-align:center;padding:5rem 1rem}
 #hero h1{
   font-size:3rem;
@@ -46,44 +60,99 @@ a:hover{color:#2563eb}
 }
 #hero p{color:#94a3b8}
 
+/* ===== LAYOUT ===== */
 .container{max-width:1100px;margin:auto;padding:2rem 1rem}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
 
-.card{background:#111827;border-radius:16px;overflow:hidden;border:1px solid #1f2937;transition:.3s}
+/* ===== CARDS ===== */
+.card{
+  background:#111827;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid #1f2937;
+  transition:.25s;
+}
 .card:hover{transform:translateY(-6px);border-color:#3b82f6}
 
 .preview img{width:100%;height:250px;object-fit:cover}
 
-.content{padding:1.5rem}
-.title{font-weight:600;font-size:1.2rem}
+.content{padding:1.2rem}
+.title{font-weight:600;font-size:1.15rem}
 .desc{color:#94a3b8;font-size:.9rem;margin:.5rem 0}
 
+/* BUTTON (smaller like original vibe) */
 .button{
   display:inline-block;
-  padding:.5rem 1rem;
-  border-radius:8px;
   background:#2563eb;
-  color:white;
-  font-size:.85rem;
+  padding:.35rem .7rem;
+  border-radius:6px;
+  font-size:.8rem;
   cursor:pointer;
 }
 
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;justify-content:center;align-items:center}
-.modal-content{background:#020617;border-radius:16px;max-width:900px;width:95%;max-height:85vh;overflow:auto}
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
 
-.image-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;padding:2rem}
-.image-gallery img{width:100%;height:200px;object-fit:cover;border-radius:10px;cursor:pointer}
+.modal-content{
+  background:#020617;
+  border-radius:16px;
+  max-width:900px;
+  width:95%;
+  max-height:85vh;
+  overflow:auto;
+}
 
-.img-viewer{position:fixed;top:0;left:0;width:100%;height:100%;background:black;display:none;justify-content:center;align-items:center}
+.image-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+  padding:2rem;
+}
+
+.image-gallery img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* IMAGE VIEWER */
+.img-viewer{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
 .img-viewer img{max-width:90%;max-height:90%}
 
 footer{text-align:center;padding:3rem;color:#64748b}
+
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr}
+}
 </style>
+
 </head>
 
 <body class="banner-on">
 
-<div id="banner">⚠️ Site under construction — some content may be incomplete</div>
+<div id="banner">
+⚠️ Site under construction — some content may be incomplete
+</div>
 
 <nav>
 <div class="logo">Colin Jennings</div>
@@ -102,7 +171,8 @@ footer{text-align:center;padding:3rem;color:#64748b}
 <div id="projects" class="grid"></div>
 </div>
 
-<!-- MODALS -->
+<!-- MODAL -->
+
 <div id="modal" class="modal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
 <span onclick="closeModal()" style="float:right;padding:1rem;cursor:pointer">✕</span>
@@ -110,9 +180,13 @@ footer{text-align:center;padding:3rem;color:#64748b}
 </div>
 </div>
 
+<!-- IMAGE VIEWER -->
+
 <div id="imgViewer" class="img-viewer" onclick="closeImage()">
 <img id="imgViewerSrc">
 </div>
+
+<!-- CONTACT -->
 
 <div id="contactModal" class="modal" onclick="closeContact()">
 <div class="modal-content" onclick="event.stopPropagation()" style="padding:2rem">
@@ -127,99 +201,138 @@ footer{text-align:center;padding:3rem;color:#64748b}
 <footer>© 2026 Colin Jennings</footer>
 
 <script>
+
 const projects = [
 {
-title:"Highlander Racing - FSAE",
-description:"Drivetrain Engineering Associate at UC Riverside's Highlander Racing Team",
-thumbnail:"assets/highlander racing.jpg",
-slides:"assets/Drivetrain Intern Project.pdf",
-images:["assets/robot-cad.jpg","assets/FSAE ScatterShield Drawing.png"],
-details:"As a Drivetrain Associate..."
+  title: "Highlander Racing - FSAE",
+  description: "Drivetrain Engineering Associate at UC Riverside's Highlander Racing Team",
+  thumbnail: "assets/highlander racing.jpg",
+  slides: "assets/Drivetrain Intern Project.pdf",
+  images: [
+    "assets/robot-cad.jpg",
+    "assets/FSAE ScatterShield Drawing.png"
+  ],
+  details: "Differential + scatter shield design using SolidWorks FEA."
 },
+
 {
-title:"Dream Makers and Risk Takers Award",
-description:"Featured in Tri-Valley innovation article",
-thumbnail:"assets/Dream Makers & Risk-Takers.jpg",
-external:"https://www.pleasantonweekly.com/news/2024/12/11/the-future-of-innovation-bold-students-honored-as-tri-valleys-2024-dreammakers-and-risktakers/"
+  title: "Dream Makers and Risk Takers Award",
+  description: "Featured in Tri-Valley innovation article",
+  thumbnail: "assets/Dream Makers & Risk-Takers.jpg",
+  external: "https://www.pleasantonweekly.com/news/2024/12/11/the-future-of-innovation-bold-students-honored-as-tri-valleys-2024-dreammakers-and-risktakers/"
 },
+
 {
-title:"Pleasanton Pixels",
-description:"Computer controlled holiday light shows.",
-video:"https://www.youtube.com/embed/tC4W2WbGR0o",
-thumbnail:"assets/Pleasanton Pixels 1.JPG",
-images:[
-"assets/Halloween Outdoor Setup.JPG",
-"assets/Controller Box.JPG",
-"assets/Light Wall & Tune to sign.JPG",
-"assets/Hosue layout.png",
-"assets/Snowflakes.jpg",
-"assets/Pixel tree.jpg",
-"assets/Soldering.jpg",
-"assets/Drilling PVC.JPG",
-"assets/sequnce.png",
-"assets/Pleasanton Pixels 2.JPG",
-"assets/Pleasanton Pixels 3.JPG",
-"assets/Pleasanton Pixels 4.JPG"
-],
-details:"Large-scale engineering project..."
+  title: "Pleasanton Pixels",
+  description: "Computer controlled holiday light shows.",
+  video: "https://www.youtube.com/embed/tC4W2WbGR0o",
+  thumbnail: "assets/Pleasanton Pixels 1.JPG",
+  images: [
+    "assets/Halloween Outdoor Setup.JPG",
+    "assets/Controller Box.JPG",
+    "assets/Light Wall & Tune to sign.JPG",
+    "assets/Hosue layout.png",
+    "assets/Drilling PVC.JPG",
+    "assets/Pleasanton Pixels 2.JPG",
+    "assets/Pleasanton Pixels 3.JPG",
+    "assets/Pleasanton Pixels 4.JPG"
+  ],
+  details: "ESP32 + Raspberry Pi synchronized lighting system."
 },
+
 {
-title:"Combat Robotics (RoboGames)",
-description:"60lb robot",
-video:"https://www.youtube.com/embed/-laG-haSI4I",
-thumbnail:"assets/IMG_6491.jpeg",
-images:["assets/IMG_3930.jpeg","assets/IMG_4090.jpeg"],
-details:"Combat robot..."
+  title: "Combat Robotics (RoboGames)",
+  description: "60lb heavyweight combat robot",
+  video: "https://www.youtube.com/embed/-laG-haSI4I",
+  thumbnail: "assets/IMG_6491.jpeg",
+  images: [
+    "assets/Robot.jpeg",
+    "assets/RoboGames 2024.png",
+    "assets/IMG_3930.jpeg",
+    "assets/IMG_4090.jpeg"
+  ],
+  details: "High energy weapon system robot competing at RoboGames."
+},
+
+{
+  title: "Manufacturing & Fabrication",
+  description: "Welding, CNC, machining experience",
+  video: "https://www.youtube.com/embed/h1hCHBayH5Q",
+  thumbnail: "assets/Welding Class.jpeg",
+  images: [
+    "assets/Welding Class.jpeg",
+    "assets/Automotive Class.jpeg"
+  ],
+  details: "Hands-on fabrication training and machining."
+},
+
+{
+  title: "Ride Shield (Capstone)",
+  description: "BLE bike lock system",
+  video: "https://www.youtube.com/embed/GA05c-eLNOg",
+  thumbnail: "assets/IMG_5276.jpeg",
+  images: ["assets/IMG_5276.jpeg"],
+  details: "ESP32 + iOS BLE smart locking system."
 }
 ];
 
-const container=document.getElementById('projects');
+const container = document.getElementById('projects');
 
 projects.forEach((p,i)=>{
-const card=document.createElement('div');
-card.className='card';
+  const card=document.createElement('div');
+  card.className='card';
 
-card.innerHTML=`
-<div class="preview"><img src="${p.thumbnail}"></div>
-<div class="content">
-<div class="title">${p.title}</div>
-<div class="desc">${p.description||''}</div>
-<div class="button">${p.external?'Open Article →':'About →'}</div>
-</div>`;
+  const action = p.external
+    ? `window.open('${p.external}','_blank')`
+    : `openModal(${i})`;
 
-card.querySelector('.button').addEventListener('click',()=>{
-if(p.external){
-gtag('event','open_external',{project:p.title});
-window.open(p.external,'_blank');
-}else{
-gtag('event','open_project',{project:p.title});
-openModal(i);
-}
-});
+  card.innerHTML = `
+    <div class="preview"><img src="${p.thumbnail}"></div>
+    <div class="content">
+      <div class="title">${p.title}</div>
+      <div class="desc">${p.description || ""}</div>
+      <div class="button" onclick="${action}">
+        ${p.external ? "Open →" : "View →"}
+      </div>
+    </div>
+  `;
 
-container.appendChild(card);
+  container.appendChild(card);
 });
 
 function openModal(i){
-const p=projects[i];
-document.getElementById('modal-body').innerHTML=`
-<div style="padding:2rem">
-<h2>${p.title}</h2>
-<p>${p.details||''}</p>
-${p.slides?`<iframe src="${p.slides}" style="width:100%;height:400px"></iframe>`:''}
-${p.video?`<iframe src="${p.video}" style="width:100%;height:400px"></iframe>`:''}
-</div>
-<div class="image-gallery">
-${(p.images||[]).map(img=>`<img src="${img}" onclick="openImage('${img}')">`).join('')}
-</div>`;
-document.getElementById('modal').style.display='flex';
+  const p=projects[i];
+  document.getElementById('modal-body').innerHTML=`
+    <div style="padding:2rem">
+      <h2>${p.title}</h2>
+      <p>${p.details||""}</p>
+      ${p.video?`<iframe src="${p.video}" style="width:100%;height:400px;border:none"></iframe>`:""}
+      ${p.slides?`<iframe src="${p.slides}" style="width:100%;height:400px;border:none"></iframe>`:""}
+    </div>
+    <div class="image-gallery">
+      ${(p.images||[]).map(img=>`<img src="${img}" onclick="openImage('${img}')">`).join('')}
+    </div>
+  `;
+  document.getElementById('modal').style.display='flex';
 }
 
 function closeModal(){document.getElementById('modal').style.display='none'}
-function openImage(src){document.getElementById('imgViewerSrc').src=src;document.getElementById('imgViewer').style.display='flex'}
-function closeImage(){document.getElementById('imgViewer').style.display='none'}
-function openContact(){document.getElementById('contactModal').style.display='flex'}
-function closeContact(){document.getElementById('contactModal').style.display='none'}
+
+function openImage(src){
+  document.getElementById('imgViewerSrc').src=src;
+  document.getElementById('imgViewer').style.display='flex';
+}
+function closeImage(){
+  document.getElementById('imgViewer').style.display='none';
+}
+
+function openContact(){
+  document.getElementById('contactModal').style.display='flex';
+}
+function closeContact(){
+  document.getElementById('contactModal').style.display='none';
+}
+
 </script>
 
 </body>
