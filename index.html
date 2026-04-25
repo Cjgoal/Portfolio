@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
 <!-- GOOGLE ANALYTICS -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FGZPS91XB"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -141,6 +144,7 @@ a:hover{color:#2563eb}
 
 footer{text-align:center;padding:3rem;color:#64748b}
 </style>
+
 </head>
 
 <body class="banner-on">
@@ -171,6 +175,7 @@ footer{text-align:center;padding:3rem;color:#64748b}
 </div>
 
 <!-- MODALS -->
+
 <div id="modal" class="modal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
 <span onclick="closeModal()" style="float:right;padding:1rem;cursor:pointer">✕</span>
@@ -183,6 +188,7 @@ footer{text-align:center;padding:3rem;color:#64748b}
 </div>
 
 <!-- CONTACT -->
+
 <div id="contactModal" class="modal" onclick="closeContact()">
 <div class="modal-content" onclick="event.stopPropagation()" style="padding:2rem">
 <span onclick="closeContact()" style="float:right;cursor:pointer">✕</span>
@@ -201,7 +207,160 @@ function formatDetails(text){
   return text.split('. ').map(line => `• ${line.trim()}`).join('<br><br>');
 }
 
-const projects = YOUR_PROJECT_ARRAY_HERE;
+const projects = [
+{
+  title: "Highlander Racing - FSAE",
+  description: "Drivetrain Engineering Associate at UC Riverside's Highlander Racing Team",
+  thumbnail: "assets/highlander racing.jpg",
+  slides: "assets/Drivetrain Intern Project.pdf",
+  images: [
+    "assets/robot-cad.jpg",
+    "assets/FSAE ScatterShield Drawing.png"
+  ],
+  details: "As a Drivetrain Associate for Highlander Racing, I designed a full differential assembly and scatter shield. Used SolidWorks FEA to minimize deflection while maintaining low weight, and produced detailed engineering drawings."
+},
+{
+  title: "Dream Makers and Risk Takers Award",
+  description: "Featured in Tri-Valley innovation article",
+  thumbnail: "assets/Dream Makers & Risk-Takers.jpg",
+  external: "https://www.pleasantonweekly.com/news/2024/12/11/the-future-of-innovation-bold-students-honored-as-tri-valleys-2024-dreammakers-and-risktakers/"
+},
+{
+  title: "Pleasanton Pixels",
+  description: "Computer controlled holiday light shows.",
+  video: "https://www.youtube.com/embed/tC4W2WbGR0o",
+  thumbnail: "assets/Pleasanton Pixels 1.JPG",
+  images: [
+    "assets/Halloween Outdoor Setup.JPG",
+    "assets/Controller Box.JPG",
+    "assets/Light Wall & Tune to sign.JPG",
+    "assets/Hosue layout.png",
+    "assets/Snowflakes.jpeg",
+    "assets/Pixel tree.HEIC",
+    "assets/Soldering.JPG",
+    "assets/Drilling PVC.JPG",
+    "assets/sequnce.png",
+    "assets/Pleasanton Pixels 2.JPG",
+    "assets/Pleasanton Pixels 3.JPG",
+    "assets/Pleasanton Pixels 4.JPG"
+  ],
+  details: "A large-scale engineering project involving raspberry pi's, custom power distribution, mechanical display design, manufacturing and xLights sequencing."
+},
+{
+  title: "Combat Robotics (RoboGames)",
+  description: "60lb heavyweight robot designed for high-impact durability on a budget.",
+  video: "https://www.youtube.com/embed/-laG-haSI4I",
+  thumbnail: "assets/IMG_6491.jpeg",
+  images: [
+    "assets/Robot.jpeg",
+    "assets/Robot 2.jpeg",
+    "assets/burnt robot.JPG",
+    "assets/RoboGames 2024.png",
+    "assets/IMG_3930.jpeg",
+    "assets/IMG_4090.jpeg",
+    "assets/IMG_4160.jpeg",
+    "assets/IMG_4198.jpeg",
+    "assets/IMG_4200.jpeg",
+    "assets/IMG_4201.jpeg",
+    "assets/IMG_4219.jpeg",
+    "assets/IMG_4391.jpeg",
+    "assets/IMG_4397.jpeg",
+    "assets/IMG_9849.jpeg"
+  ],
+  details: "Engineered and built a combat robot with a 6061 aluminum frame and a high kinetic energy steel weapon, designed for 250 mph tip speed. Competed at RoboGames 2024 in San Jose."
+},
+{
+  title: "Manufacturing & Fabrication",
+  description: "Hands-on classes for Welding, Automotive technology, and Robotics.",
+  video: "https://www.youtube.com/embed/h1hCHBayH5Q?si=8SAsgRnf_8F4KXvV",
+  thumbnail: "assets/Welding Class.jpeg",
+  images: [
+    "assets/Welding Class.jpeg",
+    "assets/Automotive Class.jpeg",
+    "assets/IMG_3925.jpeg"
+  ],
+  details: "Formal introduction and training in multiple types of welding, metal manufacturing, 3D printing, laser cutting, and fabrication."
+},
+{
+  title: "Ride Shield (Capstone)",
+  description: "Automated BLE-activated bike security system.",
+  video: "https://www.youtube.com/embed/GA05c-eLNOg",
+  thumbnail: "assets/IMG_5276.jpeg",
+  images: [
+    "assets/IMG_5276.jpeg"
+  ],
+  details: "A fully integrated project featuring a mechanical braking system prototype and custom iPhone app communicating with an ESP32 over Bluetooth. Presented to local Tri-Valley technology groups."
+},
+{
+  title: "CNC Router",
+  description: "Built a CNC router to use on personal projects",
+  thumbnail: "assets/IMG_5657.jpeg",
+  images: [
+    "assets/IMG_5657.jpeg",
+    "assets/IMG_4555.jpeg"
+  ],
+  details: "Built and learned to use a cnc router running linux cnc, and using Fusion 360 CAM. Machined HDPE, plywood, and aluminum."
+},
+{
+  title:"Miscellaneous Projects / Activities",
+  thumbnail: "assets/Plane.jpeg",
+  images: [
+    "assets/Plane.jpeg",
+    "assets/Concrete.jpeg",
+    "assets/athletic net time.png",
+    "assets/IMG_5752.jpeg",
+    "assets/IMG_4778.jpeg"
+  ]
+}
+];
+
+const container=document.getElementById('projects');
+
+projects.forEach((p,i)=>{
+  const card=document.createElement('div');
+  card.className='card';
+
+  const clickAction = p.external
+    ? `gtag('event','open_external',{project:'${p.title}'}); window.open('${p.external}','_blank')`
+    : `gtag('event','open_project',{project:'${p.title}'}); openModal(${i})`;
+
+  card.innerHTML=`
+    <div class="preview"><img src="${p.thumbnail}"></div>
+    <div class="content">
+      <div class="title">${p.title}</div>
+      <div class="desc">${p.description || ''}</div>
+      <div class="button" onclick="${clickAction}">
+        ${p.external ? 'Open Article →' : 'About →'}
+      </div>
+    </div>`;
+
+  container.appendChild(card);
+});
+
+function openModal(i){
+  const p=projects[i];
+  document.getElementById('modal-body').innerHTML=`
+    <div style="padding:2rem">
+      <h2>${p.title}</h2>
+      <div class="details">${formatDetails(p.details)}</div>
+
+      ${p.slides?`<iframe src="${p.slides}" style="width:100%;height:400px"></iframe>`:''}
+      ${p.video?`<iframe src="${p.video}" style="width:100%;height:400px"></iframe>`:''}
+    </div>
+
+    <div class="image-gallery">
+      ${(p.images||[]).map(img=>`<img src="${img}" onclick="openImage('${img}')">`).join('')}
+    </div>`;
+
+  document.getElementById('modal').style.display='flex';
+}
+
+function closeModal(){document.getElementById('modal').style.display='none'}
+function openImage(src){document.getElementById('imgViewerSrc').src=src;document.getElementById('imgViewer').style.display='flex'}
+function closeImage(){document.getElementById('imgViewer').style.display='none'}
+
+function openContact(){document.getElementById('contactModal').style.display='flex'}
+function closeContact(){document.getElementById('contactModal').style.display='none'}
 </script>
 
 </body>
